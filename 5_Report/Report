@@ -1,0 +1,26 @@
+ # Report
+  *My conclusions from this program, is that in computer vision, there is no easy solution for
+anything. Each problem must have a specifically-designed solution based on trial and error,
+using different approaches, and combining different methods.
+In my program, I attempted to apply a multi-stage solution for analog clock identification.
+My goal was to correctly define all stages of identification, and reach a working
+implementation which has an acceptable success rate and can be applied to many image
+variations.
+I feel that I managed to correctly identify the stages needed to solve the problem. Regarding
+the implementation, my program has had identical results with a wide variety of pictures,
+regardless of clock background, style, color and shape.
+My success rate overall is acceptable. Most failures occur during the final stage, and I have
+yet to find a foolproof way of classifying clock hands. I feel that I have learned a lot and
+gained valuable experience during this project, and have managed to implement some of
+the computer vision theory studied in class.
+Looking forward at future improving the project, I think that the following steps can greatly
+increase the success rate:
+* Improve the line detection algorithm to detect lines accurately, under various
+backgrounds, and correctly classify them
+* Improve the circle detection algorithm to work on non-uniform background
+and under different lightings by pre-processing the image to cancel them out,
+and possibly integrating a classifier using a training set of clock images.
+* Further improve the GUI to allow webcam capture of images directly from
+the program (requires the image acquisition toolbox. The GUI currently
+supports Lenovo webcam capture software)
+* Explore other alternative or additional methods of time recognition
