@@ -1,0 +1,33 @@
+# Results
+Although the approach to the problem was clear to me, I discovered that there were many
+tricky issues that needed to be overcome while working on the system. Including partial
+successes, after testing the system on around 25 images, I can estimate that my system has
+a success rate of 75-80%.
+Tricky issues can occur from a variety of reasons, including:
+- Bad lighting
+- Non-uniform clock background
+- Cluttered clock area (smaller circles and logos)
+- Clock hands of the same length
+Since I was unable to deal with such a broad range of images, I had to reduce the spectrum
+of images I could accept by making assumptions of 'valid' input, as I described in the
+introduction.
+Regarding the last issue - since the differences in clock hand lengths are sometimes
+extremely small, incorrect labeling can occur due to similar hand length and incorrect
+identification of actual line length by the Hough line transform, resulting in a line that’s too
+long or too short. While my program works correctly on these images for most stages,
+during the last stage these differences result in some hands detected as others and a
+different time is displayed.
+There are a few approaches that could be taken to deal with the last problem. One of them
+was to fine-tune the actual line length by traversing each one and summing the pixel values
+along it. Doing so, one would expect that if the system couldn’t decide between two lines,
+this method would "tip the scales" in one direction. However, when a clock hand is
+identified as too long, occasionally it will merge with the outer perimeter of the clock. In this
+case, summing pixel values would still result in an incorrect result, since irrelevant black
+pixel values from the outer clock perimeter would be summed as well.
+Another option was to check line width. In most clocks, the seconds and minutes hands are
+very close in length, yet have different widths. Taking into account that the line
+identification may have overshot, we can calculate the middle pixel of each line (far away
+from bad pixels), create a local matrix of pixels, and sum their values. Assuming, in most
+cases, that the seconds hand is thinner than the minutes hand, we would be able to
+determine which is which. This is the approach I took, and it has managed to eliminate a
+number of incorrect decisions by the program.
